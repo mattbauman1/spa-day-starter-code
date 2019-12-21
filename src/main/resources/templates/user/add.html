@@ -6,15 +6,15 @@
     <link href="../static/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet" />
 </head>
 <body>
-<form method="post" action="/user">
+<form method="post" th:action="@{/user}">
     <div class="form-group">
         <label>Username:
-            <input type="text" name="username" size="50" class="form-control"><br>
+            <input type="text" name="username" size="50" th:value="${username}" class="form-control"><br>
         </label>
     </div>
     <div class="form-group">
         <label>Email:
-            <input type="email" name="email" size="50" class="form-control"><br>
+            <input type="email" name="email" size="50" th:value="${email}" class="form-control"><br>
         </label>
     </div>
     <div class="form-group">
@@ -24,10 +24,17 @@
     </div>
     <div class="form-group">
         <label>Confirm Password:
-            <input type="password" name="confirmpassword" size="50" class="form-control"><br>
+            <input type="password" name="verify" size="50" class="form-control"><br>
         </label>
     </div>
-    <input type="submit" value="Submit" class="btn btn-success">
+    <th:block th:if="${error}">
+        <div>
+            <label th:text="${error}" class="alert alert-danger"></label>
+        </div>
+    </th:block>
+    <div class="form-group">
+        <input type="submit" value="Submit" class="btn btn-success">
+    </div>
 </form>
 </body>
 </html>

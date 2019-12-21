@@ -6,5 +6,12 @@
 </head>
 <body>
 <h1 th:text="'Hello, ' + ${username} + '!'"></h1>
+<p></p><a th:href="@{/}">Service Selection</a></p>
+<h2>All Users</h2>
+<table>
+    <th:block th:each="user : ${users}">
+        <tr><td><a th:href="@{/user/detail/{id}(id=${user.getId()})}" th:text="${user.getUsername()}"></a></td></tr>
+    </th:block>
+</table>
 </body>
 </html>
